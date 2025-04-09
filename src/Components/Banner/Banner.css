@@ -1,0 +1,43 @@
+.main_banner_top_container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  max-width: 1920px;
+  margin: auto;
+  height: calc(90vh - 88px);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("../../assets/Banner-min.jpg");
+}
+
+.banner_title_container {
+  margin-left: 100px;
+  color: #ffffff;
+}
+
+.banner_title_container h1 {
+  font-size: 4rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.banner_title_container p {
+  font-size: 20px;
+  color: #d4d4d5;
+  margin-bottom: 20px;
+}
+
+.banner_title_container button {
+  color: #151515;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  background-color: #ffffff;
+}
+
+.banner_title_container button:active {
+  background-color: #eeeeee;
+}
