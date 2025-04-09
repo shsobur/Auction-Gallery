@@ -7,7 +7,6 @@ const Navbar = () => {
     <>
       <nav>
         <div className="main_navbar_top_container">
-
           <div className="navbar_logo_container">
             <h1>
               Auction<span>Galleary</span>
@@ -31,7 +30,6 @@ const Navbar = () => {
               <CgProfile />
             </span>
           </div>
-
         </div>
       </nav>
     </>
