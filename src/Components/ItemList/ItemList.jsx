@@ -2,6 +2,7 @@ import { FaBookmark, FaRegBookmark } from "react-icons/fa";
 import "./ItemList.css";
 import { useEffect, useState } from "react";
 import { GiSelfLove } from "react-icons/gi";
+import Cart from "../Cart/Cart";
 
 const ItemList = () => {
   const [markActive, setMarkActive] = useState(null);
@@ -87,13 +88,13 @@ const ItemList = () => {
               </div>
 
               <div className="product_card_container">
-                No product here!
+                  <Cart></Cart>
               </div>
 
               <div className="product_price_container">
                 <ul>
                   <li>Total bids Amount:</li>
-                  <li>$50000</li>
+                  <li>$52,10,670</li>
                 </ul>
               </div>
 
