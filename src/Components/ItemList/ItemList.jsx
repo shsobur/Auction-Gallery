@@ -1,9 +1,9 @@
 import "./ItemList.css";
+import Swal from "sweetalert2";
 import Cart from "../Cart/Cart";
 import { useEffect, useState } from "react";
 import { GiSelfLove } from "react-icons/gi";
 import { FaBookmark, FaRegBookmark } from "react-icons/fa";
-import Swal from "sweetalert2";
 
 const ItemList = () => {
   const [bookMarkActive, setBookMarkActive] = useState([]);
@@ -11,6 +11,15 @@ const ItemList = () => {
   const [cart, setCart] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
 
+  // Fatching products data__
+  useEffect(() => {
+    const url = "./products.json";
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => setProducts(data));
+  }, []);
+
+  // Handleing product id__
   useEffect(() => {
     if (cart.length !== 0) {
       const productId = [...new Set(cart.map((item) => item.id))];
@@ -18,6 +27,7 @@ const ItemList = () => {
     }
   }, [cart]);
 
+  // Handleing product price__
   useEffect(() => {
     const totalPrice = cart.reduce((total, item) => total + item.price, 0);
     setTotalPrice(totalPrice);
@@ -73,13 +83,6 @@ const ItemList = () => {
       title: "Bookmart added successfully",
     });
   };
-
-  useEffect(() => {
-    const url = "./products.json";
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => setProducts(data));
-  }, []);
 
   const handleRemoveBookMark = (id) => {
     const remaining = cart.filter((item) => item.id !== id);

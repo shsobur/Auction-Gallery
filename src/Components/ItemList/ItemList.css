@@ -7,7 +7,7 @@
 .main_products_list_top_contaienr h1 {
   font-size: 1.5rem;
   font-weight: 500;
-  color: #0E2954;
+  color: #0e2954;
   margin-bottom: 10px;
 }
 
@@ -50,11 +50,9 @@
   border-bottom: 2px solid #737373;
 }
 
-
 .product_card_container {
   padding: 20px;
 }
-
 
 .product_price_container {
   font-size: 1.2rem;

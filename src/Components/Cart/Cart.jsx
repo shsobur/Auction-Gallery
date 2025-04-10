@@ -16,8 +16,7 @@ const Cart = ({ item, handleRemoveBookMark }) => {
             <h2>
               {description.length == 35
                 ? `${description}`
-                : `${description.slice(0, 35)}...`
-                }
+                : `${description.slice(0, 35)}...`}
             </h2>
             <button onClick={() => handleRemoveBookMark(id)}>
               <RxCross2 />
