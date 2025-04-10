@@ -166,7 +166,11 @@ const ItemList = () => {
                         <th>
                           <button
                             onClick={() => handleBookMark(product)}
-                            className={"text-lg"}
+                            className={
+                              bookMarkActive.includes(product.id)
+                                ? "active_bookmark text-lg"
+                                : "text-lg"
+                            }
                           >
                             {bookMarkActive.includes(product.id) ? (
                               <FaBookmark />
