@@ -1,0 +1,33 @@
+footer {
+  margin-top: 100px;
+  padding: 100px 0;
+  background-color: #ebf0f5;
+}
+
+.main_footer_container {
+  text-align: center;
+}
+
+.main_footer_container h1 {
+  color: #1c50e0;
+  font-weight: 600;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.main_footer_container h1 span {
+  color: #df1562;
+}
+
+.main_footer_container h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.main_footer_container ul {
+  gap: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
