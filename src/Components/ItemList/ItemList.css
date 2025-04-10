@@ -31,10 +31,6 @@
   border: 2px solid purple;
 }
 
-.bookmark_active {
-
-}
-
 /* Right side container style__ */
 
 .product_right_side_cart_container {
@@ -71,4 +67,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+/* Massage__ */
+
+.product_cart_massage_container h1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-align: center;
 }

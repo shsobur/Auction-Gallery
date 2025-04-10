@@ -1,25 +1,32 @@
-import { RxCross2 } from "react-icons/rx";
 import "./Cart.css";
+import { RxCross2 } from "react-icons/rx";
 
-const Cart = () => {
+const Cart = ({ item, handleRemoveBookMark }) => {
+  const { id, image, price, description, bidsCount } = item;
+
   return (
     <>
       <div className="main_product_cart_container">
         <div className="product_cart_image_container">
-          <img src="https://i.postimg.cc/8cnjqc07/product-4.jpg" alt="image" />
+          <img src={image} alt="image" />
         </div>
 
         <div className="product_cart_info_container">
           <div className="product_cart_title_container">
-            <h2>1965 Gibson SG Standard Guitar...</h2>
-            <button>
+            <h2>
+              {description.length == 35
+                ? `${description}`
+                : `${description.slice(0, 35)}...`
+                }
+            </h2>
+            <button onClick={() => handleRemoveBookMark(id)}>
               <RxCross2 />
             </button>
           </div>
 
           <div className="product_cart_price_container">
-            <h3>$2,650</h3>
-            <h3>Bids: 12</h3>
+            <h3>${price}</h3>
+            <h3>Bids: {bidsCount}</h3>
           </div>
         </div>
       </div>

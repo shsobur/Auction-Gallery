@@ -1,16 +1,39 @@
-import { FaBookmark, FaRegBookmark } from "react-icons/fa";
 import "./ItemList.css";
+import Cart from "../Cart/Cart";
 import { useEffect, useState } from "react";
 import { GiSelfLove } from "react-icons/gi";
-import Cart from "../Cart/Cart";
+import { FaBookmark, FaRegBookmark } from "react-icons/fa";
 
 const ItemList = () => {
-  const [markActive, setMarkActive] = useState(null);
+  const [bookMarkActive, setBookMarkActive] = useState([]);
   const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState([]);
 
-  const handleBookMark = (id) => {
-    setMarkActive(id);
-  }
+  useEffect(() => {
+    if (cart.length !== 0) {
+      const productId = [...new Set(cart.map((item) => item.id))];
+      setBookMarkActive(productId);
+    }
+  }, [cart]);
+
+  const handleBookMark = (product) => {
+    const isExist = cart.some((item) => item.id === product.id);
+
+    if (isExist) {
+      console.log(isExist, "Item is alradu here");
+      return;
+    }
+
+    const cartData = {
+      id: product.id,
+      image: product.image,
+      description: product.description,
+      price: product.currentBidPrice,
+      bidsCount: product.bidsCount,
+    };
+
+    setCart([cartData, ...cart]);
+  };
 
   useEffect(() => {
     const url = "./products.json";
@@ -18,6 +41,12 @@ const ItemList = () => {
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
+
+  const handleRemoveBookMark = (id) => {
+    console.log(id, "Removed");
+    const remaining = cart.filter((item) => item.id !== id);
+    setCart(remaining);
+  };
 
   return (
     <>
@@ -52,25 +81,35 @@ const ItemList = () => {
                               </div>
                             </div>
                             <div>
-                              <div className="font-semibold">{product.title}</div>
+                              <div className="font-semibold">
+                                {product.title}
+                              </div>
                             </div>
                           </div>
                         </td>
 
                         <td>
-                          <p className="font-semibold">${product.currentBidPrice}</p>
+                          <p className="font-semibold">
+                            ${product.currentBidPrice}
+                          </p>
                         </td>
 
                         <td>
-                          <p className="font-semibold">{product.timeLeft}left</p>
+                          <p className="font-semibold">
+                            {product.timeLeft}left
+                          </p>
                         </td>
 
                         <th>
                           <button
-                            onClick={() => handleBookMark(product.id)}
-                            className={markActive ? "bookmark_active text-lg" : "text-lg"}
+                            onClick={() => handleBookMark(product)}
+                            className={"text-lg"}
                           >
-                            {markActive === product.id ? <FaBookmark /> : <FaRegBookmark />}
+                            {bookMarkActive.includes(product.id) ? (
+                              <FaBookmark />
+                            ) : (
+                              <FaRegBookmark />
+                            )}
                           </button>
                         </th>
                       </tr>
@@ -81,14 +120,27 @@ const ItemList = () => {
             </div>
 
             <div className="product_right_side_cart_container">
-
               <div className="product_card_title_container">
-                <span><GiSelfLove /></span>
+                <span>
+                  <GiSelfLove />
+                </span>
                 <h2>Favorite Items</h2>
               </div>
 
               <div className="product_card_container">
-                  <Cart></Cart>
+                {cart.length === 0 ? (
+                  <div className="product_cart_massage_container">
+                    <h1>No products!</h1>
+                  </div>
+                ) : (
+                  cart.map((item) => (
+                    <Cart
+                      key={item.id}
+                      item={item}
+                      handleRemoveBookMark={handleRemoveBookMark}
+                    ></Cart>
+                  ))
+                )}
               </div>
 
               <div className="product_price_container">
@@ -97,7 +149,6 @@ const ItemList = () => {
                   <li>$52,10,670</li>
                 </ul>
               </div>
-
             </div>
           </div>
         </div>
