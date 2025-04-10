@@ -9,12 +9,18 @@ const ItemList = () => {
   const [bookMarkActive, setBookMarkActive] = useState([]);
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
     if (cart.length !== 0) {
       const productId = [...new Set(cart.map((item) => item.id))];
       setBookMarkActive(productId);
     }
+  }, [cart]);
+
+  useEffect(() => {
+    const totalPrice = cart.reduce((total, item) => total + item.price, 0);
+    setTotalPrice(totalPrice);
   }, [cart]);
 
   const handleBookMark = (product) => {
@@ -26,7 +32,7 @@ const ItemList = () => {
         toast: true,
         position: "top",
         showConfirmButton: false,
-        timer: 3000,
+        timer: 2000,
         timerProgressBar: true,
         didOpen: (toast) => {
           toast.onmouseenter = Swal.stopTimer;
@@ -49,12 +55,13 @@ const ItemList = () => {
     };
 
     setCart([cartData, ...cart]);
+
     // Alert__
     const Toast = Swal.mixin({
       toast: true,
       position: "top",
       showConfirmButton: false,
-      timer: 3000,
+      timer: 2000,
       timerProgressBar: true,
       didOpen: (toast) => {
         toast.onmouseenter = Swal.stopTimer;
@@ -77,12 +84,18 @@ const ItemList = () => {
   const handleRemoveBookMark = (id) => {
     const remaining = cart.filter((item) => item.id !== id);
     setCart(remaining);
+
+    if (cart.length === 1) {
+      setCart([]);
+      setBookMarkActive([]);
+    }
+
     // Alert__
     const Toast = Swal.mixin({
       toast: true,
       position: "top",
       showConfirmButton: false,
-      timer: 3000,
+      timer: 2000,
       timerProgressBar: true,
       didOpen: (toast) => {
         toast.onmouseenter = Swal.stopTimer;
@@ -193,7 +206,7 @@ const ItemList = () => {
               <div className="product_price_container">
                 <ul>
                   <li>Total bids Amount:</li>
-                  <li>$52,10,670</li>
+                  <li>${totalPrice}</li>
                 </ul>
               </div>
             </div>
