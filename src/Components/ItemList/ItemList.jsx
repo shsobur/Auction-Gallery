@@ -3,6 +3,7 @@ import Cart from "../Cart/Cart";
 import { useEffect, useState } from "react";
 import { GiSelfLove } from "react-icons/gi";
 import { FaBookmark, FaRegBookmark } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const ItemList = () => {
   const [bookMarkActive, setBookMarkActive] = useState([]);
@@ -20,7 +21,22 @@ const ItemList = () => {
     const isExist = cart.some((item) => item.id === product.id);
 
     if (isExist) {
-      console.log(isExist, "Item is alradu here");
+      // Alert__
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        },
+      });
+      Toast.fire({
+        icon: "warning",
+        title: "Alrady added to bookmark",
+      });
       return;
     }
 
@@ -33,6 +49,22 @@ const ItemList = () => {
     };
 
     setCart([cartData, ...cart]);
+    // Alert__
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      },
+    });
+    Toast.fire({
+      icon: "success",
+      title: "Bookmart added successfully",
+    });
   };
 
   useEffect(() => {
@@ -43,9 +75,24 @@ const ItemList = () => {
   }, []);
 
   const handleRemoveBookMark = (id) => {
-    console.log(id, "Removed");
     const remaining = cart.filter((item) => item.id !== id);
     setCart(remaining);
+    // Alert__
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      },
+    });
+    Toast.fire({
+      icon: "success",
+      title: "Bookmart removed successfully",
+    });
   };
 
   return (
