@@ -9,7 +9,7 @@ const Navbar = () => {
         <div className="main_navbar_top_container">
           <div className="navbar_logo_container">
             <h1>
-              Auction<span>Galleary</span>
+              Auction<span>Gallery</span>
             </h1>
           </div>
 
