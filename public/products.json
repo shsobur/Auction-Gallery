@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "title": "Digital Camera",
+    "description": "Capture moments with high clarity and amazing zoom.",
+    "currentBidPrice": 250,
+    "timeLeft": "2 days left",
+    "bidsCount": 14,
+    "image": "https://i.postimg.cc/4y3YLVBC/product-5.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Smart Watch",
+    "description": "Track your fitness and notifications with style.",
+    "currentBidPrice": 120,
+    "timeLeft": "1 day left",
+    "bidsCount": 8,
+    "image": "https://i.postimg.cc/8cnjqc07/product-4.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Wireless Earbuds",
+    "description": "Enjoy music wirelessly with crystal clear sound.",
+    "currentBidPrice": 60,
+    "timeLeft": "3 days left",
+    "bidsCount": 21,
+    "image": "https://i.postimg.cc/Jnxy5P3c/product-1.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Action Camera",
+    "description": "Perfect for capturing your outdoor adventures anytime.",
+    "currentBidPrice": 180,
+    "timeLeft": "5 hours left",
+    "bidsCount": 18,
+    "image": "https://i.postimg.cc/mZdzcpgT/product-2.jpg"
+  },
+  {
+    "id": 5,
+    "title": "Gaming Headset",
+    "description": "Immerse yourself in game audio with surround sound.",
+    "currentBidPrice": 95,
+    "timeLeft": "4 days left",
+    "bidsCount": 10,
+    "image": "https://i.postimg.cc/X7pZ9Krd/product-3.jpg"
+  },
+  {
+    "id": 6,
+    "title": "Bluetooth Speaker",
+    "description": "Portable speaker with deep bass and clear sound.",
+    "currentBidPrice": 85,
+    "timeLeft": "6 days left",
+    "bidsCount": 12,
+    "image": "https://i.postimg.cc/q7dzf9jx/product-6.jpg"
+  }
+]
